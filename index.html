@@ -7,7 +7,35 @@
     <title>S&Ms Bildsökmotor</title>
 </head>
 <body>
-    
+    <h1>Välkommen till Sigge och Joakims fantastiska bildsökmotor!</h1>
+    <form action="javascript:myFunction(this)">
+        <label for="searchTerm"></label>
+        <input type="text" id="searchTerm">
+        <datalist id="colors">
+            <option value="grayscale">
+                <option value="transparent">
+                <option value="red">
+                <option value="orange">
+                <option value="yellow">
+                <option value="green">
+                <option value="turquoise">
+                <option value="blue">
+                <option value="lilac">
+                <option value="pink">
+                <option value="white">
+                <option value="gray">
+                <option value="black">
+                <option value="brown">
+        </datalist>
+        <button type="submit">Search</button>
+    </form>
+    <div id="content">
+        <!--Place for pictures-->
+    </div>
+    <div>
+        <button>Previous page</button>
+        <button>Next page</button>
+    </div>
     <script src="scripts/main.js" defer></script>
 </body>
 </html>
