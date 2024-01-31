@@ -21,19 +21,27 @@ html{
 body {
 	margin: auto;
 	padding: 20px;
-	max-width: 900px;
+	display: grid;
 	/*outline: 1px solid red;*/
 	/*background-color: #b3c6ff;*/
-	background-image: url('../resourses/img/matrix-2953869.jpg');
+	/*background-image: url('../resourses/img/matrix-2953869.jpg');*/
+	background-color: rgb(61, 60, 59);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;	
 }
 h1{
-	font-size: 6rem;
-	color: #0c63e6;
+	font-size: 10rem;
+	color: rgb(216, 216, 216);
 	text-align: center;
-	text-shadow: #fff 1rem 1rem 1rem;
+
+}
+form {
+	margin:  2rem auto;
+
+}
+button, input, select{
+	padding: 0.1em 0.2em;
 }
 /*
 ======================================================================
@@ -57,6 +65,19 @@ a:hover {
 Andra regler                                                         
 ======================================================================
 */
-form input placerholder {
+form input placeholder {
 	color: lightgray;
+	
+}
+div{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	color: white;
+	
+}
+img {
+	width: 550px;
+	height: 450px;
+	margin: 1rem;
+	object-fit: cover;
 }
