@@ -1,26 +1,49 @@
 const url = 'https://pixabay.com/api/';
 const apiKey = "42110623-f962f4f597ca7cf92ce7360e7"
 
-async function getResults(searchTerm) {
-    let response = await fetch(url + apikey + searchTerm);
-    let json = await response.json();
-    return json;
-    let temperature = json.current.temperature_2m;
-    let p = document.querySelector('p');
-    p.textContent = 'Current temperature in Gothenburg: ' + temperature;
+async function getResults(url) {
+    let response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      let data = await response.json();
+  
+      // Check if the 'hits' array exists in the response
+      if (data && data.hits) {
+        const hitsArray = data.hits;
+        console.log(hitsArray);
+        for(let test of hitsArray) {
+            console.log(test.webformatURL);
+            addImgHTML(test.webformatURL);
+        }
+      } else {
+        console.error('Data or hits array not available in the response');
+      }
+      
 };
+function addImgHTML(imgUrl){
+    let img = document.createElement('img');
+    img.src = imgUrl;
+    let div = document.querySelector('div');
+    div.append(img);
+}
+
 function buildApiCall(term, color){
     return `${url}?key=${apiKey}&q=${term}&colors=${color}`;
-}
+};
 function formatSearchTerm(string){
     let words = string.split(" ");
     console.log(words);
     let output = "";
-    for(let word in words) {
+    for(let word of words) {
         output += word + "+";
     }
+    output = output.substring(0, output.length - 1);
     console.log(output);
+    return output;
 };
+
 
 function onFormSubmit(event){
     event.preventDefault();
@@ -32,7 +55,9 @@ function onFormSubmit(event){
     searchTerm = formatSearchTerm(searchTerm);
     let url = buildApiCall(searchTerm, searchColor);
     console.log(url);
-}
+    let result = getResults(url);
+    //console.log(result);
+};
 
 const form = document.getElementById('searchForm');
 form.addEventListener("submit", onFormSubmit);
