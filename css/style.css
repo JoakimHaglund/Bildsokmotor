@@ -48,8 +48,8 @@ a:hover {
 Andra regler                                                         
 ======================================================================
 */
-.submit{
-	color: greenyellow;
-	
+form button{
+	background-color: rgb(76, 254, 76);
+	padding: 1rem;
 
 }
