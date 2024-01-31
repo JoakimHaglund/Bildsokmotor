@@ -8,3 +8,31 @@ Skriv en sökmotor med HTML, CSS och JavaScript som hämtar sina bilder från Pi
 - Ni behöver en API-nyckel för att använda API:et, vilket ni kan få genom att skapa ett Pixabay-konto (eller koppla ett Google/Facebook-konto).
 - I övrigt gäller samma regler och riktlinjer som i föregående uppgift, exempelvis kring semantisk HTML och responsivitet.
 Använd inga bibliotek eller ramverk; enbart er egen kod.
+
+##Javascript - funktoionalitet
+
+formatSearchTerms()
+    >ta in en sträng ex. "Hallå där världen"
+    >retunera "?Hallå+där+världen"
+getInput()
+    >Hämta data från formuläret
+getResults()
+    >hämta data från webbsidan
+displayResults()
+    >skapa visa reslutat på webbsidan
+
+datalist id colors
+    - välja färg i dropdownmeny
+    
+button
+    submit
+        -
+        -
+    previous&next page
+        -klicka till bilderna tar slut
+        -ändra färg till mörkare när man bytt sida
+        
+#CSS - design och responsivitet
+
+rätt font
+färgval knappar
