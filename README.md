@@ -11,17 +11,17 @@ Använd inga bibliotek eller ramverk; enbart er egen kod.
 
 ##Javascript - funktoionalitet
 
-formatSearchTerms()
+formatSearchTerms() -klar
     >ta in en sträng ex. "Hallå där världen"
     >retunera "?Hallå+där+världen"
-getInput()
+getInput() -klar
     >Hämta data från formuläret
-getResults()
+getResults() -klar
     >hämta data från webbsidan
-displayResults()
+displayResults() -halvklar
     >skapa visa reslutat på webbsidan
 
-datalist id colors
+datalist id colors -potentielt trasig ...heh
     - välja färg i dropdownmeny
     
 button
