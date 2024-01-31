@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>S&Ms Bildsökmotor</title>
 </head>
+
 <body>
-    <style>
-        body {
-            background-image: url(matrix-2953869.jpg);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-    </style>
     <h1>Välkommen till Sigge och Joakims fantastiska bildsökmotor!</h1>
     <form action="" id="searchForm">
         <label for="searchTerm"></label>
-        <input type="text" id="searchTerm">
-        <datalist id="colors">
-            <option value="grayscale">
-                <option value="transparent">
-                <option value="red">
-                <option value="orange">
-                <option value="yellow">
-                <option value="green">
-                <option value="turquoise">
-                <option value="blue">
-                <option value="lilac">
-                <option value="pink">
-                <option value="white">
-                <option value="gray">
-                <option value="black">
-                <option value="brown">
-        </datalist>
-        <button type="submit">Search</button>
+        <input type="text" name="searchTerm" placeholder="Search for photos">
+        <label list="text" ></label>
+        <select id="colors" name="searchColor">
+            <option value="Any color">Any color</option>
+            <option value="Grayscale">Grayscale</option>
+            <option value="Transparent">Transparent</option>
+            <option value="Red">Red</option>
+            <option value="Orange">Orange</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Green">Green</option>
+            <option value="Turquoise">Turquoise</option>
+            <option value="Blue">Blue</option>
+            <option value="Lilac">Lilac</option>
+            <option value="Pink">Pink</option>
+            <option value="White">White</option>
+            <option value="Gray">Gray</option>
+            <option value="Black">Black</option>
+            <option value="Brown">Brown</option>
+
+        </select>
+        <button type="submit" id="searchButton">Search</button>
     </form>
     <div id="content">
         <!--Place for pictures-->
@@ -46,4 +43,5 @@
     </div>
     <script src="scripts/main.js" defer></script>
 </body>
+
 </html>
