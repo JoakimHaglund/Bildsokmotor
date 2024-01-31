@@ -12,7 +12,7 @@ html{
 	font-size: 62.5%;  
 }
 *{
-	font-size: 1.6rem;
+	font-size: 3.6rem;
 	font-family: 'NewWaltDisney';
 	box-sizing: border-box;
     margin: 0;
@@ -24,7 +24,16 @@ body {
 	max-width: 900px;
 	/*outline: 1px solid red;*/
 	/*background-color: #b3c6ff;*/
-	
+	background-image: url('../resourses/img/matrix-2953869.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;	
+}
+h1{
+	font-size: 6rem;
+	color: #0c63e6;
+	text-align: center;
+	text-shadow: #fff 1rem 1rem 1rem;
 }
 /*
 ======================================================================
@@ -48,8 +57,6 @@ a:hover {
 Andra regler                                                         
 ======================================================================
 */
-form button{
-	background-color: rgb(76, 254, 76);
-	padding: 1rem;
-
+form input placerholder {
+	color: lightgray;
 }
