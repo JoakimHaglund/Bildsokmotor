@@ -1,6 +1,6 @@
 const url = 'https://pixabay.com/api/';
 const apiKey = "42110623-f962f4f597ca7cf92ce7360e7"
-
+let index = 0;
 async function getResults(url) {
     let response = await fetch(url);
 
@@ -12,6 +12,7 @@ async function getResults(url) {
       // Check if the 'hits' array exists in the response
       if (data && data.hits) {
         const hitsArray = data.hits;
+        console.log("hello:  " + data.length);
         console.log(hitsArray);
         removeImages();
         for(let test of hitsArray) {
@@ -23,14 +24,15 @@ async function getResults(url) {
       }
       
 };
-function addImgHTML(imgUrl){
+function addImagesHTML(hitsArray){
+    for(let i = index; i <)
     let img = document.createElement('img');
-    img.src = imgUrl;
+    img.src = hitsArray.webformatURL;
     let div = document.querySelector('div');
     div.append(img);
 };
 function buildApiCall(term, color){
-    return `${url}?key=${apiKey}&q=${term}&colors=${color}`;
+    return `${url}?key=${apiKey}&q=${term}&colors=${color}&per_page=200`;
 };
 function formatSearchTerm(string){
     let words = string.split(" ");
@@ -66,3 +68,4 @@ form.addEventListener("submit", onFormSubmit);
 
 let previousButton = document.querySelector('#previousPageButton');
 let nextButton = document.querySelector('#nextPageButton');
+
