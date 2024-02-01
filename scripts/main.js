@@ -28,8 +28,7 @@ function addImgHTML(imgUrl){
     img.src = imgUrl;
     let div = document.querySelector('div');
     div.append(img);
-}
-
+};
 function buildApiCall(term, color){
     return `${url}?key=${apiKey}&q=${term}&colors=${color}`;
 };
@@ -44,8 +43,6 @@ function formatSearchTerm(string){
     console.log(output);
     return output;
 };
-
-
 function onFormSubmit(event){
     event.preventDefault();
     const data = new FormData(event.target);
@@ -59,11 +56,13 @@ function onFormSubmit(event){
     let result = getResults(url);
     //console.log(result);
 };
-
 function removeImages(){
     let content = document.querySelector('#content');
     content.replaceChildren();
-}
+};
 
 const form = document.getElementById('searchForm');
 form.addEventListener("submit", onFormSubmit);
+
+let previousButton = document.querySelector('#previousPageButton');
+let nextButton = document.querySelector('#nextPageButton');
