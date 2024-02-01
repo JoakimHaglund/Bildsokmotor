@@ -15,21 +15,21 @@ async function getResults(url) {
         console.log("hello:  " + data.length);
         console.log(hitsArray);
         removeImages();
-        for(let test of hitsArray) {
-            console.log(test.webformatURL);
-            addImgHTML(test.webformatURL);
-        }
+        addImagesHTML(hitsArray, 10);
       } else {
         console.error('Data or hits array not available in the response');
       }
       
 };
-function addImagesHTML(hitsArray){
-    for(let i = index; i <)
-    let img = document.createElement('img');
-    img.src = hitsArray.webformatURL;
-    let div = document.querySelector('div');
-    div.append(img);
+function addImagesHTML(hitsArray, count){
+    count += index;
+    for(let i = index; i < count; i++){
+        let img = document.createElement('img');
+        img.src = hitsArray[i].webformatURL;
+        let div = document.querySelector('div');
+        div.append(img);
+        index = i;
+    }
 };
 function buildApiCall(term, color){
     return `${url}?key=${apiKey}&q=${term}&colors=${color}&per_page=200`;
@@ -68,4 +68,6 @@ form.addEventListener("submit", onFormSubmit);
 
 let previousButton = document.querySelector('#previousPageButton');
 let nextButton = document.querySelector('#nextPageButton');
+
+
 
