@@ -69,3 +69,12 @@ form.addEventListener("submit", onFormSubmit);
 let previousButton = document.querySelector('#previousPageButton');
 let nextButton = document.querySelector('#nextPageButton');
 
+nextButton.onClick = () => {
+removeImages();
+addImagesHTML();
+}
+
+PreviousButton.onClick = () => {
+removeImages();
+addImagesHTML();
+}
