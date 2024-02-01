@@ -71,3 +71,12 @@ let nextButton = document.querySelector('#nextPageButton');
 
 
 
+nextButton.onClick = () => {
+removeImages();
+addImagesHTML();
+}
+
+PreviousButton.onClick = () => {
+removeImages();
+addImagesHTML();
+}
