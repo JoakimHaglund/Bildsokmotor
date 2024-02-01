@@ -13,6 +13,7 @@ async function getResults(url) {
       if (data && data.hits) {
         const hitsArray = data.hits;
         console.log(hitsArray);
+        removeImages();
         for(let test of hitsArray) {
             console.log(test.webformatURL);
             addImgHTML(test.webformatURL);
@@ -58,6 +59,11 @@ function onFormSubmit(event){
     let result = getResults(url);
     //console.log(result);
 };
+
+function removeImages(){
+    let content = document.querySelector('#content');
+    content.replaceChildren();
+}
 
 const form = document.getElementById('searchForm');
 form.addEventListener("submit", onFormSubmit);
