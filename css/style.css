@@ -70,9 +70,11 @@ form input placeholder {
 	
 }
 div{
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	color: white;
+	display: flex;
+	color: #fff;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 3rem;
 	
 }
 img {
