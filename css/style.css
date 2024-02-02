@@ -92,3 +92,7 @@ div button{
     justify-content: center;
     text-align: center; 
 }
+#page-button-container{
+	display: flex;
+	justify-content: center;
+}
