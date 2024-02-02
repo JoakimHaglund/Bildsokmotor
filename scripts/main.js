@@ -2,6 +2,7 @@ const url = 'https://pixabay.com/api/';
 const apiKey = "42110623-f962f4f597ca7cf92ce7360e7"
 
 let currentPage = 1;
+let totalHits = 0;
 
 async function getResults(url) {
     let response = await fetch(url);
@@ -13,9 +14,10 @@ async function getResults(url) {
   
       // Check if the 'hits' array exists in the response
       if (data && data.hits) {
-        const hitsArray = data.hits;
+        totalHits = Math.ceil(data.totalHits / 10);
+        console.log('totalhits: ' + totalHits)
         removeImages();
-        addImagesHTML(hitsArray);
+        addImagesHTML(data);
       } else {
         console.error('Data or hits array not available in the response');
       }
@@ -23,10 +25,26 @@ async function getResults(url) {
 };
 function addImagesHTML(hitsArray) {
     let content = document.querySelector('#content');
-    hitsArray.forEach(hit => {
+    hitsArray.hits.forEach(hit => {
         let img = document.createElement('img');
         img.src = hit.webformatURL;
-        content.appendChild(img);
+
+        let tagElement = document.createElement('p');
+        tagElement.textContent = `Tags: ${hit.tags}`;
+
+        let userElement = document.createElement('p');
+        userElement.textContent = `User: ${hit.user}`;
+        
+        let textContainer = document.createElement('div');
+        let imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+
+        textContainer.appendChild(tagElement);
+        textContainer.appendChild(userElement);
+
+        imageContainer.appendChild(img);
+        imageContainer.appendChild(textContainer);
+        content.appendChild(imageContainer);
     });
 }
 
@@ -35,18 +53,16 @@ function buildApiCall(term, color){
 };
 function formatSearchTerm(string){
     let words = string.split(" ");
-    console.log(words);
     let output = "";
     for(let word of words) {
         output += word + "+";
     }
     output = output.substring(0, output.length - 1);
-    console.log(output);
     return output;
 };
 function onFormSubmit(event){
     event.preventDefault();
-    const data = new FormData(event.target);
+    let data = new FormData(event.target);
     let searchTerm = data.get("searchTerm");
 	let searchColor = data.get("searchColor");
     console.log(`searchTerm: ${searchTerm}, searchColor: ${searchColor}`);
@@ -71,17 +87,21 @@ let nextButton = document.querySelector('#nextPageButton');
 
 
 nextButton.onclick = () => {
-    currentPage++;
-    let searchTerm = document.querySelector('input[name="searchTerm"]').value;
-    let searchColor = document.querySelector('select[name="searchColor"]').value;
-    searchTerm = formatSearchTerm(searchTerm);
-    let apiUrl = buildApiCall(searchTerm, searchColor);
-    getResults(apiUrl);
+    if (currentPage < totalHits){
+        currentPage++;
+        console.log('++' + currentPage);
+        let searchTerm = document.querySelector('input[name="searchTerm"]').value;
+        let searchColor = document.querySelector('select[name="searchColor"]').value;
+        searchTerm = formatSearchTerm(searchTerm);
+        let apiUrl = buildApiCall(searchTerm, searchColor);
+        getResults(apiUrl);
+    } 
 }
 
 previousButton.onclick = () => {
     if (currentPage > 1) {
         currentPage--;
+        console.log('--' + currentPage);
         let searchTerm = document.querySelector('input[name="searchTerm"]').value;
         let searchColor = document.querySelector('select[name="searchColor"]').value;
         searchTerm = formatSearchTerm(searchTerm);
