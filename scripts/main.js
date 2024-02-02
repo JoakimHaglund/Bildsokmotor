@@ -83,10 +83,17 @@ function disableButton(buttonId) {
     let button = document.querySelector(buttonId);
     button.disabled = true;
   }
+  function enableButton(buttonId) {
+    let button = document.querySelector(buttonId);
+    if(button.disabled === true){
+        button.disabled = false;
+    }
+  }
   
   nextButton.onclick = () => {
     if (currentPage < totalHits) {
       currentPage++;
+      enableButton('#previousPageButton');
       console.log("++" + currentPage);
       let searchTerm = document.querySelector('input[name="searchTerm"]').value;
       let searchColor = document.querySelector(
@@ -103,6 +110,7 @@ function disableButton(buttonId) {
   previousButton.onclick = () => {
     if (currentPage > 1) {
       currentPage--;
+      enableButton('#nextPageButton');
       console.log("--" + currentPage);
       let searchTerm = document.querySelector('input[name="searchTerm"]').value;
       let searchColor = document.querySelector(
