@@ -1,6 +1,8 @@
 const url = 'https://pixabay.com/api/';
 const apiKey = "42110623-f962f4f597ca7cf92ce7360e7"
-let index = 0;
+
+let currentPage = 1;
+
 async function getResults(url) {
     let response = await fetch(url);
 
@@ -12,27 +14,24 @@ async function getResults(url) {
       // Check if the 'hits' array exists in the response
       if (data && data.hits) {
         const hitsArray = data.hits;
-        console.log("hello:  " + data.length);
-        console.log(hitsArray);
         removeImages();
-        addImagesHTML(hitsArray, 10);
+        addImagesHTML(hitsArray);
       } else {
         console.error('Data or hits array not available in the response');
       }
       
 };
-function addImagesHTML(hitsArray, count){
-    count += index;
-    for(let i = index; i < count; i++){
+function addImagesHTML(hitsArray) {
+    let content = document.querySelector('#content');
+    hitsArray.forEach(hit => {
         let img = document.createElement('img');
-        img.src = hitsArray[i].webformatURL;
-        let div = document.querySelector('div');
-        div.append(img);
-        index = i;
-    }
-};
+        img.src = hit.webformatURL;
+        content.appendChild(img);
+    });
+}
+
 function buildApiCall(term, color){
-    return `${url}?key=${apiKey}&q=${term}&colors=${color}&per_page=200`;
+    return `${url}?key=${apiKey}&q=${term}&colors=${color}&per_page=10&page=${currentPage}`;
 };
 function formatSearchTerm(string){
     let words = string.split(" ");
@@ -71,12 +70,22 @@ let nextButton = document.querySelector('#nextPageButton');
 
 
 
-nextButton.onClick = () => {
-removeImages();
-addImagesHTML();
+nextButton.onclick = () => {
+    currentPage++;
+    let searchTerm = document.querySelector('input[name="searchTerm"]').value;
+    let searchColor = document.querySelector('select[name="searchColor"]').value;
+    searchTerm = formatSearchTerm(searchTerm);
+    let apiUrl = buildApiCall(searchTerm, searchColor);
+    getResults(apiUrl);
 }
 
-PreviousButton.onClick = () => {
-removeImages();
-addImagesHTML();
+previousButton.onclick = () => {
+    if (currentPage > 1) {
+        currentPage--;
+        let searchTerm = document.querySelector('input[name="searchTerm"]').value;
+        let searchColor = document.querySelector('select[name="searchColor"]').value;
+        searchTerm = formatSearchTerm(searchTerm);
+        let apiUrl = buildApiCall(searchTerm, searchColor);
+        getResults(apiUrl);
+    }
 }
