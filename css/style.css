@@ -85,7 +85,10 @@ img {
 div button{
 	margin: 10px;
 }
-.image-container{
-	display: grid;
-	grid-template-columns: 1fr;
+.image-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
 }

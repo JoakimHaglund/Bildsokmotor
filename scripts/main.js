@@ -34,16 +34,13 @@ function addImagesHTML(hitsArray) {
 
         let userElement = document.createElement('p');
         userElement.textContent = `User: ${hit.user}`;
-        
-        let textContainer = document.createElement('div');
         let imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
 
-        textContainer.appendChild(tagElement);
-        textContainer.appendChild(userElement);
-
+        
         imageContainer.appendChild(img);
-        imageContainer.appendChild(textContainer);
+        imageContainer.appendChild(tagElement);
+        imageContainer.appendChild(userElement);
         content.appendChild(imageContainer);
     });
 }
