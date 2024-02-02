@@ -68,10 +68,13 @@ Andra regler
 form input placeholder {
   color: lightgray;
 }
-div {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  color: white;
+div{
+	display: flex;
+	color: #fff;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 3rem;
+	
 }
 img {
   height: 400px;
@@ -89,4 +92,8 @@ div button {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+#page-button-container{
+	display: flex;
+	justify-content: center;
 }
