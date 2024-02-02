@@ -29,10 +29,10 @@ function addImagesHTML(hitsArray) {
     img.src = hit.webformatURL;
 
     let tagElement = document.createElement("p");
-    tagElement.textContent = `Tags: ${hit.tags}`;
+    tagElement.textContent = `${hit.tags}`;
 
     let userElement = document.createElement("p");
-    userElement.textContent = `User: ${hit.user}`;
+    userElement.textContent = `taken by: ${hit.user}`;
     let imageContainer = document.createElement("div");
     imageContainer.classList.add("image-container");
 

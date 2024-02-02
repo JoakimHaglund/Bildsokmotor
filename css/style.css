@@ -82,6 +82,10 @@ img {
   margin: 1rem;
   object-fit: cover;
 }
+.image-container p{
+	font-size: 26px;
+	margin: 0;
+}
 
 div button {
   margin: 10px;
