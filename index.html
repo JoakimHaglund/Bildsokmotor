@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="sv">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>S&Ms Bildsökmotor</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Välkommen till Sigge och Joakims fantastiska bildsökmotor!</h1>
     <form action="" id="searchForm">
-        <label for="searchTerm"></label>
-        <input type="text" name="searchTerm" placeholder="Search for photos">
-        <label list="text" ></label>
-        <select id="colors" name="searchColor">
-            <option value="any+color">Any color</option>
-            <option value="grayscale">Grayscale</option>
-            <option value="transparent">Transparent</option>
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-            <option value="turquoise">Turquoise</option>
-            <option value="blue">Blue</option>
-            <option value="lilac">Lilac</option>
-            <option value="pink">Pink</option>
-            <option value="white">White</option>
-            <option value="gray">Gray</option>
-            <option value="black">Black</option>
-            <option value="brown">Brown</option>
-
-        </select>
-        <button type="submit" id="searchButton">Search</button>
+      <label for="searchTerm"></label>
+      <input type="text" name="searchTerm" placeholder="Search for photos" />
+      <label list="text"></label>
+      <select id="colors" name="searchColor">
+        <option value="any+color">Any color</option>
+        <option value="grayscale">Grayscale</option>
+        <option value="transparent">Transparent</option>
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+        <option value="turquoise">Turquoise</option>
+        <option value="blue">Blue</option>
+        <option value="lilac">Lilac</option>
+        <option value="pink">Pink</option>
+        <option value="white">White</option>
+        <option value="gray">Gray</option>
+        <option value="black">Black</option>
+        <option value="brown">Brown</option>
+      </select>
+      <button type="submit" id="searchButton">Search</button>
     </form>
     <div id="content">
-        <!--Place for pictures-->
+      <!--Place for pictures-->
     </div>
     <div>
-        <button type="button" id="previousPageButton">Previous page</button>
-        <button type="button" id="nextPageButton">Next page</button>
+      <button type="button" id="previousPageButton">Previous page</button>
+      <button type="button" id="nextPageButton">Next page</button>
     </div>
     <script src="scripts/main.js" defer></script>
-</body>
-
+  </body>
 </html>
