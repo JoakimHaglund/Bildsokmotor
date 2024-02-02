@@ -68,12 +68,12 @@ Andra regler
 form input placeholder {
   color: lightgray;
 }
-div{
+#content{
 	display: flex;
 	color: #fff;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 3rem;
+	gap: 3rem 0;
 	
 }
 img {
