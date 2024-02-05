@@ -101,17 +101,8 @@ div button {
   display: flex;
   justify-content: center;
 }
-
-@media screen and (min-width: 600px) {
-  /* Apply styles for larger screens */
-  input[type="text"] {
-    width: 80%; /* Adjust the width for larger screens */
-  }
+input[type="text"] {
+  width: 10%;
+  flex: 1; /* Further adjust the width for even larger screens */
 }
 
-@media screen and (min-width: 900px) {
-  /* Apply styles for even larger screens */
-  input[type="text"] {
-    width: 60%; /* Further adjust the width for even larger screens */
-  }
-}
