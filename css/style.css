@@ -73,7 +73,8 @@ form input placeholder {
 }
 #content {
   display: flex;
-  color: #fff;
+  color: #000;
+  text-shadow: #fff  0 0 6px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 3rem;
@@ -87,6 +88,13 @@ img {
 }
 .image-container p {
   font-size: 26px;
+}
+img:hover {
+	border: solid 2px #fff;
+	box-shadow: -3px -5px 15px #000;
+  position: relative;
+  bottom: 5px;
+  right: 5px;
 }
 
 div button {
