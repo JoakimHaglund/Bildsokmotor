@@ -66,6 +66,8 @@ function onFormSubmit(event) {
     console.log(url);
     let result = getResults(url);
     //console.log(result);
+
+    document.getElementById('page-button-container').style.display = 'block';
 }
 function removeImages() {
     let content = document.querySelector("#content");
