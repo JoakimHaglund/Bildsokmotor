@@ -18,6 +18,10 @@ html {
   margin: 0;
   padding: 0;
 }
+
+select option {
+  font-family: "NewWaltDisney", 'Brush Script MT'; 
+}
 body {
   margin: auto;
   padding: 20px;
@@ -113,16 +117,7 @@ div button {
   justify-content: center;
 }
 
-@media screen and (min-width: 600px) {
-  /* Apply styles for larger screens */
-  input[type="text"] {
-    width: 80%; /* Adjust the width for larger screens */
-  }
-}
-
-@media screen and (min-width: 900px) {
-  /* Apply styles for even larger screens */
-  input[type="text"] {
-    width: 60%; /* Further adjust the width for even larger screens */
-  }
+input[type="text"] {
+  flex: 1;
+  width: 10%; /* Further adjust the width for even larger screens */
 }
