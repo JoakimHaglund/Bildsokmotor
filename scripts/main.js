@@ -83,13 +83,23 @@ function enableButton(buttonId) {
         button.disabled = false;
     }
 }
-
+function setPageButtonState(){
+    if (currentPage === 1) {
+        enableButton('#nextPageButton');
+    };
+    
+};
 const form = document.getElementById("searchForm");
 form.addEventListener("submit", onFormSubmit);
 
 let previousButton = document.querySelector("#previousPageButton");
 let nextButton = document.querySelector("#nextPageButton");
-
+if(currentPage === 1){
+    disableButton('#previousPageButton');
+}
+if(totalHits <= 10 ){
+    disableButton('#nextPageButton');
+}
 
 nextButton.onclick = () => {
     if (currentPage < totalHits) {
@@ -103,9 +113,10 @@ nextButton.onclick = () => {
         searchTerm = formatSearchTerm(searchTerm);
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
-    } else {
+    };
+    if(currentPage >= totalHits) {
         disableButton('#nextPageButton');
-    }
+    };
 };
 
 previousButton.onclick = () => {
