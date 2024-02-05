@@ -2,7 +2,7 @@ const url = "https://pixabay.com/api/";
 const apiKey = "42110623-f962f4f597ca7cf92ce7360e7";
 
 let currentPage = 1;
-let totalHits = 0;
+let totalPages = 0;
 
 async function getResults(url) {
     let response = await fetch(url);
@@ -14,10 +14,11 @@ async function getResults(url) {
 
     // Check if the 'hits' array exists in the response
     if (data && data.hits) {
-        totalHits = Math.ceil(data.totalHits / 10);
-        console.log("totalhits: " + totalHits);
+        totalPages = Math.ceil(data.totalHits / 10);
+        console.log("totalhits: " + totalPages);
         removeImages();
         addImagesHTML(data);
+        setPageButtonState();
     } else {
         console.error("Data or hits array not available in the response");
     }
@@ -67,7 +68,7 @@ function onFormSubmit(event) {
     let result = getResults(url);
     //console.log(result);
 
-    document.getElementById('page-button-container').style.display = 'block';
+    document.getElementById('page-button-container').style.display = 'flex';
 }
 function removeImages() {
     let content = document.querySelector("#content");
@@ -84,27 +85,32 @@ function enableButton(buttonId) {
     }
 }
 function setPageButtonState(){
+    console.log('currentpage: ' + currentPage +' totalhits: ' +totalPages)
     if (currentPage === 1) {
-        enableButton('#nextPageButton');
+        disableButton('#previousPageButton');
+    } else{
+        enableButton('#previousPageButton');
     };
+    if(totalPages > 1 && currentPage !== totalPages){
+        enableButton('#nextPageButton');
+    } else {
+        disableButton('#nextPageButton');
+    }
     
 };
+
+
 const form = document.getElementById("searchForm");
 form.addEventListener("submit", onFormSubmit);
 
 let previousButton = document.querySelector("#previousPageButton");
 let nextButton = document.querySelector("#nextPageButton");
-if(currentPage === 1){
-    disableButton('#previousPageButton');
-}
-if(totalHits <= 10 ){
-    disableButton('#nextPageButton');
-}
+
 
 nextButton.onclick = () => {
-    if (currentPage < totalHits) {
+    if (currentPage < totalPages) {
         currentPage++;
-        enableButton('#previousPageButton');
+
         console.log("++" + currentPage);
         let searchTerm = document.querySelector('input[name="searchTerm"]').value;
         let searchColor = document.querySelector(
@@ -114,15 +120,12 @@ nextButton.onclick = () => {
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
     };
-    if(currentPage >= totalHits) {
-        disableButton('#nextPageButton');
-    };
 };
 
 previousButton.onclick = () => {
     if (currentPage > 1) {
         currentPage--;
-        enableButton('#nextPageButton');
+
 
         console.log("--" + currentPage);
         let searchTerm = document.querySelector('input[name="searchTerm"]').value;
@@ -132,7 +135,6 @@ previousButton.onclick = () => {
         searchTerm = formatSearchTerm(searchTerm);
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
-    } else {
-        disableButton('#previousPageButton');
-    }
+    } 
 };
+
