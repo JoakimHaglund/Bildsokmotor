@@ -3,6 +3,8 @@ const apiKey = "42110623-f962f4f597ca7cf92ce7360e7";
 
 let currentPage = 1;
 let totalPages = 0;
+let searchTerm = '';
+let searchColor = '';
 
 async function getResults(url) {
     let response = await fetch(url);
@@ -15,7 +17,8 @@ async function getResults(url) {
     // Check if the 'hits' array exists in the response
     if (data && data.hits) {
         totalPages = Math.ceil(data.totalHits / 10);
-        console.log("totalhits: " + totalPages);
+        console.log(url);
+        console.log("search hits: " + totalPages);
         removeImages();
         addImagesHTML(data);
         setPageButtonState();
@@ -56,10 +59,12 @@ function formatSearchTerm(string) {
     return output;
 }
 function onFormSubmit(event) {
+    currentPage = 1;
+    totalPages = 0;
     event.preventDefault();
     let data = new FormData(event.target);
-    let searchTerm = data.get("searchTerm");
-    let searchColor = data.get("searchColor");
+    searchTerm = data.get("searchTerm");
+    searchColor = data.get("searchColor");
     console.log(`searchTerm: ${searchTerm}, searchColor: ${searchColor}`);
     /*gör allt */
     searchTerm = formatSearchTerm(searchTerm);
@@ -110,12 +115,7 @@ let nextButton = document.querySelector("#nextPageButton");
 nextButton.onclick = () => {
     if (currentPage < totalPages) {
         currentPage++;
-
-        console.log("++" + currentPage);
-        let searchTerm = document.querySelector('input[name="searchTerm"]').value;
-        let searchColor = document.querySelector(
-            'select[name="searchColor"]'
-        ).value;
+        console.log(searchTerm);
         searchTerm = formatSearchTerm(searchTerm);
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
@@ -128,10 +128,6 @@ previousButton.onclick = () => {
 
 
         console.log("--" + currentPage);
-        let searchTerm = document.querySelector('input[name="searchTerm"]').value;
-        let searchColor = document.querySelector(
-            'select[name="searchColor"]'
-        ).value;
         searchTerm = formatSearchTerm(searchTerm);
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
