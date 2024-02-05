@@ -42,6 +42,6 @@ To use the Pixabay API, you need to obtain an API key. Visit the [Pixabay websit
 
 ## Credits:
 
-This project was created by [Your Name] and [Your Team/Contributors] as part of [Project Name or Course]. Feel free to contribute, provide feedback, or report issues via GitHub.
+This project was created by Andreas Siggelin and Joakim Haglund Malm as part of an assignment for our Frontend development class. Feel free to contribute, provide feedback, or report issues via GitHub.
 
 **Note:** Please ensure compliance with Pixabay's terms of service and usage policies when using the Pixabay API for fetching images.
