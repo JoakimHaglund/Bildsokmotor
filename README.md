@@ -1,37 +1,47 @@
-Skriv en sökmotor med HTML, CSS och JavaScript som hämtar sina bilder från Pixabay. Exakt utformning och innehåll är upp till er, men ni måste uppfylla följande krav:
+# Image Search Engine using Pixabay API
 
+This project is a simple yet powerful image search engine developed using HTML, CSS, and JavaScript. It utilizes the Pixabay API to fetch images based on user input and preferences. Below are the key features and requirements of the project:
 
-- Det ska finnas knappar för "föregående sida" och "nästa sida" för att navigera mellan sökresultaten. Dessa knappar ska inaktiveras när användaren är på första respektive sista sidan.
+## Features:
 
-- Utgå från dokumentationen för Pixabay-API:et för att ta reda på hur API:et används och vad det kan göra.
-- Ni behöver en API-nyckel för att använda API:et, vilket ni kan få genom att skapa ett Pixabay-konto (eller koppla ett Google/Facebook-konto).
-- I övrigt gäller samma regler och riktlinjer som i föregående uppgift, exempelvis kring semantisk HTML och responsivitet.
-Använd inga bibliotek eller ramverk; enbart er egen kod.
+1. **Search Functionality**: Users can enter a search term and select a color preference for the images they want to discover.
 
-##Javascript - funktoionalitet
+2. **Color Selection**: Users can choose from a range of colors or opt for "Any color" to view images regardless of their color scheme.
 
-formatSearchTerms() -klar
-    >ta in en sträng ex. "Hallå där världen"
-    >retunera "?Hallå+där+världen"
-getInput() -klar
-    >Hämta data från formuläret
-getResults() -klar
-    >hämta data från webbsidan
-displayResults() -halvklar
-    >skapa visa reslutat på webbsidan
+3. **Tag and Photographer Display**: Each image displayed includes tags (as provided by Pixabay) and the name of the photographer.
 
-datalist id colors -potentielt trasig ...heh
-    - välja färg i dropdownmeny
-    
-button
-    submit
-        -
-        -
-    previous&next page
-        -klicka till bilderna tar slut
-        -ändra färg till mörkare när man bytt sida
-        
-#CSS - design och responsivitet
+4. **Pagination**: The search results are paginated, allowing users to navigate through multiple pages of results with the "Previous Page" and "Next Page" buttons.
 
-rätt font
-färgval knappar
+5. **Responsive Design**: The interface is designed to be responsive, ensuring a seamless experience across various devices and screen sizes.
+
+6. **API Integration**: The project integrates with the Pixabay API, requiring an API key for access. Users can obtain an API key by creating a Pixabay account.
+
+## Usage:
+
+1. **Getting Started**: Clone the repository or download the project files to your local machine.
+
+2. **Obtaining an API Key**: To use the Pixabay API, you need to obtain an API key by signing up for a Pixabay account or linking your Google/Facebook account.
+
+3. **Setting Up the Environment**: Ensure that you have a modern web browser installed (e.g., Google Chrome, Mozilla Firefox) and a text editor for viewing and editing the source code.
+
+4. **Launching the Application**: Open the `index.html` file in your web browser to launch the image search engine.
+
+5. **Searching for Images**: Enter a search term and select a color preference from the dropdown menu. Click the "Search" button to retrieve images based on your criteria.
+
+6. **Navigating Through Results**: Use the "Previous Page" and "Next Page" buttons to navigate through the paginated search results.
+
+## Requirements:
+
+- HTML5, CSS3, and JavaScript are used for development.
+- No external libraries or frameworks are utilized; the project relies solely on custom code.
+- Semantic HTML and responsive design principles are followed for accessibility and compatibility across devices.
+
+## API Key:
+
+To use the Pixabay API, you need to obtain an API key. Visit the [Pixabay website](https://pixabay.com/api/docs/) for documentation and instructions on obtaining your API key.
+
+## Credits:
+
+This project was created by [Your Name] and [Your Team/Contributors] as part of [Project Name or Course]. Feel free to contribute, provide feedback, or report issues via GitHub.
+
+**Note:** Please ensure compliance with Pixabay's terms of service and usage policies when using the Pixabay API for fetching images.
