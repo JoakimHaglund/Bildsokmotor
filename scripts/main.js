@@ -67,7 +67,7 @@ function onFormSubmit(event) {
     let result = getResults(url);
     //console.log(result);
 
-    document.getElementById('page-button-container').style.display = 'block';
+    document.getElementById('page-button-container').style.display = 'flex';
 }
 function removeImages() {
     let content = document.querySelector("#content");
