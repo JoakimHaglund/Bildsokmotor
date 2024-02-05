@@ -24,7 +24,6 @@ select option {
 }
 body {
   margin: auto;
-  padding: 20px;
   display: grid;
   /*outline: 1px solid red;*/
   /*background-color: #b3c6ff;*/
@@ -120,4 +119,43 @@ div button {
 input[type="text"] {
   flex: 1;
   width: 10%; /* Further adjust the width for even larger screens */
+}
+@media (max-width: 500px) {
+  body{
+    display: block;
+  }
+  h1{
+    font-size: 6rem;
+  }
+  img{
+    width: 300px;
+  }
+  #content{
+    gap: 1rem;
+  }
+  form{
+    /*flex-wrap: wrap;*/
+    display: grid;
+    grid-template-areas:
+  'a a'
+  'b c';
+  grid-template-columns: 1fr 1fr;
+    margin: 1rem;
+  }
+  form select{
+    grid-area: b;
+}
+  form button{
+    grid-area: c;
+}
+ input[type="text"] {
+  grid-area: a;
+    width: auto;
+
+  }/*
+  form button, form select{
+    flex: 1;
+    margin: 1rem;
+
+  }*/
 }
