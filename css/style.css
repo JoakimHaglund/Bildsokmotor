@@ -1,16 +1,13 @@
-/*
-======================================================================
-Globala regler                                                        
-======================================================================
-*/
 @font-face {
   font-family: NewWaltDisney;
   src: url(font/NewWaltDisneyFontRegular-BPen.ttf);
 }
+
 html {
   /*Bra storlek för att använda REM då 62.5% av 16px är 10*/
   font-size: 62.5%;
 }
+
 * {
   font-size: 3.6rem;
   font-family: "NewWaltDisney";
@@ -20,142 +17,169 @@ html {
 }
 
 select option {
-  font-family: "NewWaltDisney", 'Brush Script MT'; 
+  font-family: "NewWaltDisney", 'Brush Script MT';
 }
+
 body {
   margin: auto;
   display: grid;
-  /*outline: 1px solid red;*/
-  /*background-color: #b3c6ff;*/
   background-image: url('../resourses/img/1486230.jpg');
   background-color: rgb(61, 60, 59);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
+
 h1 {
   font-size: 10rem;
   color: rgb(190, 0, 0);
   text-align: center;
 
 }
-form {	
+
+form {
   display: flex;
   margin: 2rem auto;
   gap: 10px;
 }
+
+form input placeholder {
+  color: lightgray;
+}
+
+input[type="text"] {
+  flex: 1;
+  width: 10%;
+}
+
 button,
 input,
 select {
   padding: 0.1em 0.2em;
 }
-/*
-======================================================================
-Regler för länkar                                                     
-======================================================================
-*/
-
-a:link,
-a:visited {
-  text-decoration: none;
-  color: #000;
-}
-
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
-
-/*
-======================================================================
-Andra regler                                                         
-======================================================================
-*/
-form input placeholder {
-  color: lightgray;
-}
-#content {
-  display: flex;
-  color: #000;
-  text-shadow: #fff  0 0 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3rem;
-}
-img {
-  aspect-ratio: 16/13;
-  width: 400px;
-  margin: 1rem;
-  object-fit: cover;
-  border-radius: 5px;
-
-}
-.image-container p {
-  font-size: 26px;
-}
-img:hover {
-	border: solid 2px #fff;
-	box-shadow: -3px -5px 15px #000;
-  position: relative;
-  bottom: 5px;
-  right: 5px;
-}
 
 div button {
   margin: 10px;
 }
-.image-container {
+
+#page-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+======================================================================
+Picture zoom with js rules                                                     
+======================================================================
+*/
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#full-size {
+  position: fixed;
+  z-index: 50;
+  top: 0vh;
+  left: 0;
+  background: rgb(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+#full-size * {
+  max-width: 95%;
+
+}
+
+/*
+======================================================================
+Image and associated container rules                                                         
+======================================================================
+*/
+
+#content {
+  display: flex;
+  color: #fff;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  margin: 5rem 0;
+}
+
+#content img {
+  aspect-ratio: 16/13;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image-container{
+  background: rgb(0, 0, 0, 0.5);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-#page-button-container {
-  display: flex;
-  justify-content: center;
+
+.image-container:hover{
+  position: relative;
+  scale: 1.1;
 }
 
-input[type="text"] {
-  flex: 1;
-  width: 10%; /* Further adjust the width for even larger screens */
+.image-container p {
+  font-size: 26px;
 }
+
+/*
+======================================================================
+Media rules                                                         
+======================================================================
+*/
+
 @media (max-width: 500px) {
-  body{
+  body {
     display: block;
   }
-  h1{
+
+  h1 {
     font-size: 6rem;
   }
-  img{
-    width: 300px;
+
+  img {
+    max-width: 300px;
   }
-  #content{
+
+  #content {
     gap: 1rem;
   }
-  form{
-    /*flex-wrap: wrap;*/
+
+  form {
     display: grid;
     grid-template-areas:
-  'a a'
-  'b c';
-  grid-template-columns: 1fr 1fr;
+      'a a'
+      'b c';
+    grid-template-columns: 1fr 1fr;
     margin: 1rem;
   }
-  form select{
+
+  form select {
     grid-area: b;
-}
-  form button{
+  }
+
+  form button {
     grid-area: c;
-}
- input[type="text"] {
-  grid-area: a;
+  }
+
+  input[type="text"] {
+    grid-area: a;
     width: auto;
-
-  }/*
-  form button, form select{
-    flex: 1;
-    margin: 1rem;
-
-  }*/
+  }
 }

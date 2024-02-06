@@ -17,15 +17,13 @@ async function getResults(url) {
     // Check if the 'hits' array exists in the response
     if (data && data.hits) {
         totalPages = Math.ceil(data.totalHits / 10);
-        console.log(url);
-        console.log("search hits: " + totalPages);
         removeImages();
         addImagesHTML(data);
         setPageButtonState();
     } else {
         console.error("Data or hits array not available in the response");
     }
-}
+};
 function addImagesHTML(hitsArray) {
     let content = document.querySelector("#content");
     hitsArray.hits.forEach((hit) => {
@@ -37,73 +35,88 @@ function addImagesHTML(hitsArray) {
 
         let userElement = document.createElement("p");
         userElement.textContent = `taken by: ${hit.user}`;
+
         let imageContainer = document.createElement("div");
         imageContainer.classList.add("image-container");
+
+        img.onclick = () => {
+            bigPicture(hit);
+        }
 
         imageContainer.appendChild(img);
         imageContainer.appendChild(tagElement);
         imageContainer.appendChild(userElement);
         content.appendChild(imageContainer);
     });
-}
+};
+function bigPicture(hit) {
+    let div = document.querySelector('#full-size');
+    let img = document.createElement('img');
+    img.src = hit.largeImageURL;
+    img.onclick = () => {
+        div.className = 'hidden';
+        img.remove();
+    }
+    div.appendChild(img);
+    img.style.width = '90%'
+    img.style.aspectRatio = hit.imageWidth + '/' + hit.imageHeight;
+    div.className = 'show';
+};
 function buildApiCall(term, color) {
     return `${url}?key=${apiKey}&q=${term}&colors=${color}&per_page=10&page=${currentPage}`;
-}
+};
 function formatSearchTerm(string) {
     let words = string.split(" ");
     let output = "";
+
     for (let word of words) {
         output += word + "+";
     }
+
     output = output.substring(0, output.length - 1);
     return output;
-}
+};
 function onFormSubmit(event) {
     currentPage = 1;
     totalPages = 0;
     event.preventDefault();
     let data = new FormData(event.target);
+
     searchTerm = data.get("searchTerm");
     searchColor = data.get("searchColor");
-    console.log(`searchTerm: ${searchTerm}, searchColor: ${searchColor}`);
-    /*gör allt */
     searchTerm = formatSearchTerm(searchTerm);
+
     let url = buildApiCall(searchTerm, searchColor);
-    console.log(url);
-    let result = getResults(url);
-    //console.log(result);
+    getResults(url);
 
     document.getElementById('page-button-container').style.display = 'flex';
-}
+};
 function removeImages() {
     let content = document.querySelector("#content");
     content.replaceChildren();
-}
+};
 function disableButton(buttonId) {
     let button = document.querySelector(buttonId);
     button.disabled = true;
-}
+};
 function enableButton(buttonId) {
     let button = document.querySelector(buttonId);
     if (button.disabled === true) {
         button.disabled = false;
     }
-}
-function setPageButtonState(){
-    console.log('currentpage: ' + currentPage +' totalhits: ' +totalPages)
+};
+function setPageButtonState() {
     if (currentPage === 1) {
         disableButton('#previousPageButton');
-    } else{
+    } else {
         enableButton('#previousPageButton');
     };
-    if(totalPages > 1 && currentPage !== totalPages){
+    if (totalPages > 1 && currentPage !== totalPages) {
         enableButton('#nextPageButton');
     } else {
         disableButton('#nextPageButton');
     }
-    
 };
-
 
 const form = document.getElementById("searchForm");
 form.addEventListener("submit", onFormSubmit);
@@ -111,26 +124,20 @@ form.addEventListener("submit", onFormSubmit);
 let previousButton = document.querySelector("#previousPageButton");
 let nextButton = document.querySelector("#nextPageButton");
 
-
 nextButton.onclick = () => {
     if (currentPage < totalPages) {
         currentPage++;
-        console.log(searchTerm);
         searchTerm = formatSearchTerm(searchTerm);
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
     };
 };
-
 previousButton.onclick = () => {
     if (currentPage > 1) {
         currentPage--;
-
-
-        console.log("--" + currentPage);
         searchTerm = formatSearchTerm(searchTerm);
         let apiUrl = buildApiCall(searchTerm, searchColor);
         getResults(apiUrl);
-    } 
+    }
 };
 
