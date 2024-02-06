@@ -1,6 +1,6 @@
 @font-face {
   font-family: NewWaltDisney;
-  src: url(font/NewWaltDisneyFontRegular-BPen.ttf);
+  src: url(../resourses/font/NewWaltDisneyFontRegular-BPen.ttf);
 }
 
 html {
@@ -10,7 +10,7 @@ html {
 
 * {
   font-size: 3.6rem;
-  font-family: "NewWaltDisney";
+  font-family: "NewWaltDisney" , 'Brush Script MT';
   box-sizing: border-box;
   margin: 0;
   padding: 0;
