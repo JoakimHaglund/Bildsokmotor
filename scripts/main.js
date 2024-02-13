@@ -58,7 +58,6 @@ function bigPicture(hit) {
         img.remove();
     }
     div.appendChild(img);
-    img.style.width = '90%'
     img.style.aspectRatio = hit.imageWidth + '/' + hit.imageHeight;
     div.className = 'show';
 };
